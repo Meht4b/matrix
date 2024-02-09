@@ -8,6 +8,9 @@ class matrix:
 
     
     def __add__(self,other):
+        if self.order != other.order:
+            raise Exception('order not same')
+            
         res = []
         for i in range(len(self.matrix)):
             res.append([])
@@ -17,6 +20,8 @@ class matrix:
     
     
     def __sub__(self,other):
+        if self.order != other.order:
+            raise Exception('order not same')
         res = []
         for i in range(len(self.matrix)):
             res.append([])
@@ -27,6 +32,8 @@ class matrix:
 
     def __mul__(self,other):
         if isinstance(other,matrix):
+            if self.order[1] != other.order[0]:
+                raise Exception('Order is not coherent for multiplication')
             res=[]
             for i in range(len(self.matrix)):
                 res.append([])
